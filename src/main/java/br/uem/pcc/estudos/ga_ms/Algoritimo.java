@@ -1,4 +1,4 @@
-package br.uem.pcc.estudos.ga;
+package br.uem.pcc.estudos.ga_ms;
 
 import java.util.Random;
 
@@ -7,7 +7,7 @@ public class Algoritimo {
     private static Individuo solucao;
     private static double taxaDeCrossover;
     private static double taxaDeMutacao;
-    private static String caracteres;
+    private static String[] métodos;
 
     public static Populacao novaGeracao(Populacao populacao, boolean elitismo) {
         Random r = new Random();
@@ -97,11 +97,11 @@ public class Algoritimo {
         return pais;
     }
 
-    public static Individuo getSolucao() {
+    public static String getSolucao() {
         return solucao;
     }
 
-    public static void setSolucao(Individuo solucao) {
+    public static void setSolucao(String solucao) {
         Algoritimo.solucao = solucao;
     }
 
@@ -121,13 +121,18 @@ public class Algoritimo {
         Algoritimo.taxaDeMutacao = taxaDeMutacao;
     }
 
-    public static String getCaracteres() {
-        return caracteres;
+    public static String[] getMétodos() {
+        return métodos;
     }
 
-    public static void setCaracteres(String caracteres) {
-        Algoritimo.caracteres = caracteres;
+    public static void setMétodos(String[] métodos) {
+        Algoritimo.métodos = métodos;
     }
+
+	public static void setSolucao(Individuo individuo) {
+		// TODO Auto-generated method stub
+		
+	}
     
     
 }

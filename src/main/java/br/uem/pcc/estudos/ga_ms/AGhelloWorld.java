@@ -1,13 +1,40 @@
-package br.uem.pcc.estudos.ga;
+package br.uem.pcc.estudos.ga_ms;
 
 public class AGhelloWorld {
 
     public static void main(String[] args) {
 
         //Define a solução
-        Algoritimo.setSolucao(Individuo.comGenes("Teste de string"));
+        Algoritimo.setSolucao(new Individuo(new String[][] {
+        	new String[] {
+            		"[EMPRÉSTIMO] ManterEmpréstimo.emprestar()",
+            		"[EMPRÉSTIMO] ManterEmpréstimo.devolver()",
+            		"[EMPRÉSTIMO] ManterEmpréstimo.cancelar()",
+            		"[EMPRÉSTIMO] ManterEmpréstimo.estonar()",
+            		"[EMPRÉSTIMO] ManterEmpréstimo.avaliar()"
+        	},
+        	new String[] {
+            		"[FINANCEIRO] GerenciarMulta.calcular()",
+            		"[FINANCEIRO] GerenciarMulta.receber()",
+            		"[FINANCEIRO] GerenciarMulta.estornar()",
+            		"[FINANCEIRO] GerenciarMulta.calcularJuros()",
+            		"[FINANCEIRO] GerenciarMulta.baixar()"        			
+        	} 
+        }));
         //Define os caracteres existentes
-        Algoritimo.setCaracteres("!,.:;?áÁãÃâÂõÕôÔóÓéêíÉÊQWERTYUIOPASDFGHJKLÇZXCVBNMqwertyuiopasdfghjklçzxcvbnm1234567890 ");
+        Algoritimo.setMétodos(new String[] {
+        		"[EMPRÉSTIMO] ManterEmpréstimo.emprestar()",
+        		"[EMPRÉSTIMO] ManterEmpréstimo.devolver()",
+        		"[EMPRÉSTIMO] ManterEmpréstimo.cancelar()",
+        		"[EMPRÉSTIMO] ManterEmpréstimo.estonar()",
+        		"[EMPRÉSTIMO] ManterEmpréstimo.avaliar()",
+        		"[FINANCEIRO] GerenciarMulta.calcular()",
+        		"[FINANCEIRO] GerenciarMulta.receber()",
+        		"[FINANCEIRO] GerenciarMulta.estornar()",
+        		"[FINANCEIRO] GerenciarMulta.calcularJuros()",
+        		"[FINANCEIRO] GerenciarMulta.baixar()"
+        });
+        
         //taxa de crossover de 60%
         Algoritimo.setTaxaDeCrossover(0.6);
         //taxa de mutação de 3%
@@ -20,7 +47,7 @@ public class AGhelloWorld {
         int numMaxGeracoes = 10000;
 
         //define o número de genes do indivíduo baseado na solução
-        int numGenes = Algoritimo.getSolucao().getGenes().length();
+        int numGenes = Algoritimo.getSolucao().length();
 
         //cria a primeira população aleatérioa
         Populacao populacao = new Populacao(numGenes, tamPop);
@@ -28,7 +55,7 @@ public class AGhelloWorld {
         boolean temSolucao = false;
         int geracao = 0;
 
-        System.out.println("Iniciando... Aptidão da solução: "+Algoritimo.getSolucao().getGenes().length());
+        System.out.println("Iniciando... Aptidão da solução: "+Algoritimo.getSolucao().length());
         
         //loop até o critério de parada
         while (!temSolucao && geracao < numMaxGeracoes) {

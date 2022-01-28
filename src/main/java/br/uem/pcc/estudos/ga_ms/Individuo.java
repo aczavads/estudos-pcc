@@ -1,4 +1,4 @@
-package br.uem.pcc.estudos.ga;
+package br.uem.pcc.estudos.ga_ms;
 
 import java.util.Random;
 
@@ -7,9 +7,6 @@ public class Individuo {
     private String genes = "";
     private int aptidao = 0;
 
-    public Individuo() {
-	}
-    
     //gera um indivíduo aleatório
     public Individuo(int numGenes) {
         genes = "";
@@ -47,9 +44,12 @@ public class Individuo {
         geraAptidao();
     }
 
-    //gera o valor de aptidão, será calculada pelo número de bits do gene iguais ao da solução
+    public Individuo(String[][] microserviços) {
+	}
+
+	//gera o valor de aptidão, será calculada pelo número de bits do gene iguais ao da solução
     private void geraAptidao() {
-        String solucao = Algoritimo.getSolucao().getGenes();
+        String solucao = Algoritimo.getSolucao();
         for (int i = 0; i < solucao.length(); i++) {
             if (solucao.charAt(i) == genes.charAt(i)) {
                 aptidao++;
@@ -64,14 +64,4 @@ public class Individuo {
     public String getGenes() {
         return genes;
     }
-
-	public static Individuo comGenes(String genes) {
-		Individuo individuo = new Individuo();
-		individuo.genes = genes;
-		return individuo;
-	}
 }
-
-
-
-
