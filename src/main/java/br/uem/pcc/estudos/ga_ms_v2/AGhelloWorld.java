@@ -1,40 +1,27 @@
-package br.uem.pcc.estudos.ga_ms;
+package br.uem.pcc.estudos.ga_ms_v2;
 
 public class AGhelloWorld {
 
     public static void main(String[] args) {
 
+    	String[] métodos = {
+			"[EMPRÉSTIMO] ManterEmpréstimo.emprestar()",
+			"[EMPRÉSTIMO] ManterEmpréstimo.devolver()",
+			"[EMPRÉSTIMO] ManterEmpréstimo.cancelar()",
+			"[EMPRÉSTIMO] ManterEmpréstimo.estonar()",
+			"[FINANCEIRO] GerenciarMulta.calcular()",
+			"[FINANCEIRO] GerenciarMulta.receber()",
+			"[FINANCEIRO] GerenciarMulta.estornar()",
+			"[FINANCEIRO] GerenciarMulta.calcularJuros()",
+			"[FINANCEIRO] GerenciarMulta.baixar()",
+			"[EMPRÉSTIMO] ManterEmpréstimo.avaliar()"
+		};        			
+
+    	
         //Define a solução
-        Algoritimo.setSolucao(new Individuo(new String[][] {
-        	new String[] {
-            		"[EMPRÉSTIMO] ManterEmpréstimo.emprestar()",
-            		"[EMPRÉSTIMO] ManterEmpréstimo.devolver()",
-            		"[EMPRÉSTIMO] ManterEmpréstimo.cancelar()",
-            		"[EMPRÉSTIMO] ManterEmpréstimo.estonar()",
-            		"[EMPRÉSTIMO] ManterEmpréstimo.avaliar()"
-        	},
-        	new String[] {
-            		"[FINANCEIRO] GerenciarMulta.calcular()",
-            		"[FINANCEIRO] GerenciarMulta.receber()",
-            		"[FINANCEIRO] GerenciarMulta.estornar()",
-            		"[FINANCEIRO] GerenciarMulta.calcularJuros()",
-            		"[FINANCEIRO] GerenciarMulta.baixar()"        			
-        	} 
-        }));
+        Algoritimo.setSolucao(Individuo.comGenes("1111222221"));
         //Define os caracteres existentes
-        Algoritimo.setMétodos(new String[] {
-        		"[EMPRÉSTIMO] ManterEmpréstimo.emprestar()",
-        		"[EMPRÉSTIMO] ManterEmpréstimo.devolver()",
-        		"[EMPRÉSTIMO] ManterEmpréstimo.cancelar()",
-        		"[EMPRÉSTIMO] ManterEmpréstimo.estonar()",
-        		"[EMPRÉSTIMO] ManterEmpréstimo.avaliar()",
-        		"[FINANCEIRO] GerenciarMulta.calcular()",
-        		"[FINANCEIRO] GerenciarMulta.receber()",
-        		"[FINANCEIRO] GerenciarMulta.estornar()",
-        		"[FINANCEIRO] GerenciarMulta.calcularJuros()",
-        		"[FINANCEIRO] GerenciarMulta.baixar()"
-        });
-        
+        Algoritimo.setCaracteres("12");
         //taxa de crossover de 60%
         Algoritimo.setTaxaDeCrossover(0.6);
         //taxa de mutação de 3%
@@ -47,7 +34,7 @@ public class AGhelloWorld {
         int numMaxGeracoes = 10000;
 
         //define o número de genes do indivíduo baseado na solução
-        int numGenes = Algoritimo.getSolucao().length();
+        int numGenes = Algoritimo.getSolucao().getGenes().length();
 
         //cria a primeira população aleatérioa
         Populacao populacao = new Populacao(numGenes, tamPop);
@@ -55,7 +42,7 @@ public class AGhelloWorld {
         boolean temSolucao = false;
         int geracao = 0;
 
-        System.out.println("Iniciando... Aptidão da solução: "+Algoritimo.getSolucao().length());
+        System.out.println("Iniciando... Aptidão da solução: "+Algoritimo.getSolucao().getGenes().length());
         
         //loop até o critério de parada
         while (!temSolucao && geracao < numMaxGeracoes) {

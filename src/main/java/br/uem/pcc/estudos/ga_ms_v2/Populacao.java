@@ -1,4 +1,4 @@
-package br.uem.pcc.estudos.ga_ms;
+package br.uem.pcc.estudos.ga_ms_v2;
 
 public class Populacao {
 
@@ -39,10 +39,10 @@ public class Populacao {
     }
 
     //verifoca se algum indivíduo da população possui a solução
-    public boolean temSolocao(String solucao) {
+    public boolean temSolocao(Individuo solucao) {
         Individuo i = null;
         for (int j = 0; j < individuos.length; j++) {
-            if (individuos[j].getAptidao() == 1.0) {
+            if (individuos[j].getGenes().equals(solucao.getGenes())) {
                 i = individuos[j];
                 break;
             }
