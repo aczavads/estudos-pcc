@@ -64,7 +64,31 @@ public class Individuo {
     		//System.out.println(this.genes.charAt(i) + " ==> " + Algoritimo.getMonolito()[i] + "  ==> " + númeroDoMicroserviço + ":" + númeroDaFuncionalidade);
     		distribuiçãoFuncionalidadesPorMS[númeroDaFuncionalidade][númeroDoMicroserviço-1]++;
     	}
-    	aptidao = 0;
+    	calcularAptidãoPelaDistribuiçãoDeFuncionalidades(linhas, colunas, distribuiçãoFuncionalidadesPorMS);
+    	descontarAptidãoPorMicroserviçosSemFuncionalidades(linhas, colunas, distribuiçãoFuncionalidadesPorMS);
+    	    	
+    	System.out.println("Aptidão: " + aptidao);
+    }
+
+	private void descontarAptidãoPorMicroserviçosSemFuncionalidades(int linhas, int colunas,
+			int[][] distribuiçãoFuncionalidadesPorMS) {
+		int quantidadeMsSemFuncionalidades = 0;
+		for (int coluna = 0; coluna < colunas; coluna++) {
+			int quantidadeFuncionalidades = 0;
+			for (int linha = 0; linha < linhas; linha++) {
+				quantidadeFuncionalidades += distribuiçãoFuncionalidadesPorMS[linha][coluna];
+			}
+			if (quantidadeFuncionalidades == 0) {
+				quantidadeMsSemFuncionalidades++;
+			}
+		}
+		int médiaDeMétodosEsperadaPorMS = Algoritimo.getMonolito().length / Algoritimo.getCaracteres().length();
+		aptidao -= médiaDeMétodosEsperadaPorMS * quantidadeMsSemFuncionalidades;
+	}
+
+	private void calcularAptidãoPelaDistribuiçãoDeFuncionalidades(int linhas, int colunas,
+			int[][] distribuiçãoFuncionalidadesPorMS) {
+		aptidao = 0;
     	System.out.println(this.genes);
     	for (int i = 0; i < linhas; i++) {
     		System.out.print("Funcionalidade: " +  i + "  ");
@@ -78,8 +102,7 @@ public class Individuo {
     		aptidao += maiorDistribuiçãoPorFuncionalidade;
     		System.out.println();
 		}
-    	System.out.println("Aptidão: " + aptidao);
-    }
+	}
 
     public int getAptidao() {    
         return aptidao;

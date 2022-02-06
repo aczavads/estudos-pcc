@@ -14,7 +14,24 @@ public class AGhelloWorld {
 			"[FINANCEIRO] GerenciarMulta.receber()",
 			"[FINANCEIRO] GerenciarMulta.estornar()",
 			"[FINANCEIRO] GerenciarMulta.calcularJuros()",
-			"[FINANCEIRO] GerenciarMulta.baixar()"
+			"[FINANCEIRO] GerenciarMulta.baixar()",
+			"[EMPRÉSTIMO2] ManterEmpréstimo.emprestar()",
+			"[EMPRÉSTIMO2] ManterEmpréstimo.devolver()",
+			"[EMPRÉSTIMO2] ManterEmpréstimo.cancelar()",
+			"[EMPRÉSTIMO2] ManterEmpréstimo.estonar()",
+			"[EMPRÉSTIMO2] ManterEmpréstimo.avaliar()",
+			"[EMPRÉSTIMO2] ManterEmpréstimo.emprestar()",
+			"[EMPRÉSTIMO2] ManterEmpréstimo.devolver()",
+			"[EMPRÉSTIMO2] ManterEmpréstimo.cancelar()",
+			"[EMPRÉSTIMO2] ManterEmpréstimo.estonar()",
+			"[EMPRÉSTIMO2] ManterEmpréstimo.avaliar()",
+			"[FINANCEIRO2] GerenciarMulta.calcular()",
+			"[FINANCEIRO2] GerenciarMulta.receber()",
+			"[FINANCEIRO2] GerenciarMulta.calcular()",
+			"[FINANCEIRO2] GerenciarMulta.receber()",
+			"[FINANCEIRO2] GerenciarMulta.estornar()",
+			"[FINANCEIRO2] GerenciarMulta.calcularJuros()",
+			"[FINANCEIRO2] GerenciarMulta.baixar()"
 		};        			
 
     	
@@ -22,7 +39,7 @@ public class AGhelloWorld {
         //Algoritimo.setSolucao(Individuo.comGenes("1111222221"));
         //Define os caracteres existentes
     	Algoritimo.setMonolito(monolito);
-        Algoritimo.setCaracteres("12");
+        Algoritimo.setCaracteres("123");
         //taxa de crossover de 60%
         Algoritimo.setTaxaDeCrossover(0.6);
         //taxa de mutação de 3%
