@@ -40,17 +40,7 @@ public class Populacao {
 
     //verifoca se algum indivíduo da população possui a solução
     public boolean temSolocao(Individuo solucao) {
-        Individuo i = null;
-        for (int j = 0; j < individuos.length; j++) {
-            if (individuos[j].getGenes().equals(solucao.getGenes())) {
-                i = individuos[j];
-                break;
-            }
-        }
-        if (i == null) {
-            return false;
-        }
-        return true;
+        return false;
     }
 
     //ordena a população pelo valor de aptidão de cada indivíduo, do maior valor para o menor, assim se eu quiser obter o melhor indivíduo desta população, acesso a posição 0 do array de indivíduos
@@ -87,4 +77,8 @@ public class Populacao {
     public Individuo getIndivduo(int pos) {
         return individuos[pos];
     }
+    
+    public Individuo[] getIndividuos() {
+		return individuos;
+	}
 }

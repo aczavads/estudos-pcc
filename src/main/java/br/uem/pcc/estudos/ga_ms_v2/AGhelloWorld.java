@@ -4,23 +4,24 @@ public class AGhelloWorld {
 
     public static void main(String[] args) {
 
-    	String[] métodos = {
+    	String[] monolito = {
 			"[EMPRÉSTIMO] ManterEmpréstimo.emprestar()",
 			"[EMPRÉSTIMO] ManterEmpréstimo.devolver()",
 			"[EMPRÉSTIMO] ManterEmpréstimo.cancelar()",
 			"[EMPRÉSTIMO] ManterEmpréstimo.estonar()",
+			"[EMPRÉSTIMO] ManterEmpréstimo.avaliar()",
 			"[FINANCEIRO] GerenciarMulta.calcular()",
 			"[FINANCEIRO] GerenciarMulta.receber()",
 			"[FINANCEIRO] GerenciarMulta.estornar()",
 			"[FINANCEIRO] GerenciarMulta.calcularJuros()",
-			"[FINANCEIRO] GerenciarMulta.baixar()",
-			"[EMPRÉSTIMO] ManterEmpréstimo.avaliar()"
+			"[FINANCEIRO] GerenciarMulta.baixar()"
 		};        			
 
     	
         //Define a solução
-        Algoritimo.setSolucao(Individuo.comGenes("1111222221"));
+        //Algoritimo.setSolucao(Individuo.comGenes("1111222221"));
         //Define os caracteres existentes
+    	Algoritimo.setMonolito(monolito);
         Algoritimo.setCaracteres("12");
         //taxa de crossover de 60%
         Algoritimo.setTaxaDeCrossover(0.6);
@@ -31,18 +32,16 @@ public class AGhelloWorld {
         //tamanho da população
         int tamPop = 100;
         //numero máximo de gerações
-        int numMaxGeracoes = 10000;
+        int numMaxGeracoes = 100;
 
         //define o número de genes do indivíduo baseado na solução
-        int numGenes = Algoritimo.getSolucao().getGenes().length();
+        int numGenes = monolito.length;
 
         //cria a primeira população aleatérioa
         Populacao populacao = new Populacao(numGenes, tamPop);
-
+        
         boolean temSolucao = false;
         int geracao = 0;
-
-        System.out.println("Iniciando... Aptidão da solução: "+Algoritimo.getSolucao().getGenes().length());
         
         //loop até o critério de parada
         while (!temSolucao && geracao < numMaxGeracoes) {

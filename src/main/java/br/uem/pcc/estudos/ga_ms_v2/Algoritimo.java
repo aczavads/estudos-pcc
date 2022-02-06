@@ -1,6 +1,11 @@
 package br.uem.pcc.estudos.ga_ms_v2;
 
+import java.util.List;
+import java.util.Map;
 import java.util.Random;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Algoritimo {
 
@@ -8,6 +13,9 @@ public class Algoritimo {
     private static double taxaDeCrossover;
     private static double taxaDeMutacao;
     private static String caracteres;
+	private static String[] monolito;
+	private static Map<String, Long> métodosPorFuncionalidade;
+	private static List<String> funcionalidades;
 
     public static Populacao novaGeracao(Populacao populacao, boolean elitismo) {
         Random r = new Random();
@@ -128,6 +136,28 @@ public class Algoritimo {
     public static void setCaracteres(String caracteres) {
         Algoritimo.caracteres = caracteres;
     }
-    
+
+	public static void setMonolito(String[] monolito) {
+		Algoritimo.monolito = monolito;		
+    	Algoritimo.métodosPorFuncionalidade =  Stream.of(monolito) 
+    			.map(v -> v.substring(v.indexOf('[')+1, v.lastIndexOf(']')))
+    			.collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
+    	Algoritimo.funcionalidades = Stream.of(monolito) 
+    			.map(v -> v.substring(v.indexOf('[')+1, v.lastIndexOf(']')))
+    			.distinct()
+    			.collect(Collectors.toList());
+	}
+	
+	public static String[] getMonolito() {
+		return monolito;
+	}
+	
+	public static Map<String, Long> getMétodosPorFuncionalidade() {
+		return métodosPorFuncionalidade;
+	}
+	
+	public static List<String> getFuncionalidades() {
+		return funcionalidades;
+	}
     
 }

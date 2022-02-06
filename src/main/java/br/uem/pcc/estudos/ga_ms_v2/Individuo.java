@@ -1,5 +1,7 @@
 package br.uem.pcc.estudos.ga_ms_v2;
 
+import java.util.Map;
+import java.util.Optional;
 import java.util.Random;
 
 public class Individuo {
@@ -49,15 +51,37 @@ public class Individuo {
 
     //gera o valor de aptidão, será calculada pelo número de bits do gene iguais ao da solução
     private void geraAptidao() {
-        String solucao = Algoritimo.getSolucao().getGenes();
-        for (int i = 0; i < solucao.length(); i++) {
-            if (solucao.charAt(i) == genes.charAt(i)) {
-                aptidao++;
-            }
-        }
+    	int linhas = Algoritimo.getFuncionalidades().size();
+		int colunas = Algoritimo.getCaracteres().length();
+		int[][] distribuiçãoFuncionalidadesPorMS = new int[linhas][colunas];
+    	
+    	System.out.println("=========");
+    	for (int i = 0; i < this.genes.length(); i++) {
+    		int númeroDoMicroserviço = Integer.parseInt(String.valueOf(this.genes.charAt(i)));
+    		int númeroDaFuncionalidade = Algoritimo.getFuncionalidades().indexOf(Optional.of(Algoritimo.getMonolito()[i]).map(v -> v.substring(v.indexOf('[')+1, v.lastIndexOf(']'))).get());
+    		//System.out.println(Optional.of(Algoritimo.getMonolito()[i]).map(v -> v.substring(v.indexOf('[')+1, v.lastIndexOf(']'))).get());
+    		//int númeroDaFuncionalidade= 0;    			
+    		//System.out.println(this.genes.charAt(i) + " ==> " + Algoritimo.getMonolito()[i] + "  ==> " + númeroDoMicroserviço + ":" + númeroDaFuncionalidade);
+    		distribuiçãoFuncionalidadesPorMS[númeroDaFuncionalidade][númeroDoMicroserviço-1]++;
+    	}
+    	aptidao = 0;
+    	System.out.println(this.genes);
+    	for (int i = 0; i < linhas; i++) {
+    		System.out.print("Funcionalidade: " +  i + "  ");
+        	int maiorDistribuiçãoPorFuncionalidade = 0;
+    		for (int j = 0; j < colunas; j++) {
+    			if (distribuiçãoFuncionalidadesPorMS[i][j] > maiorDistribuiçãoPorFuncionalidade) {
+    				maiorDistribuiçãoPorFuncionalidade = distribuiçãoFuncionalidadesPorMS[i][j]; 
+    			}
+    			System.out.print(distribuiçãoFuncionalidadesPorMS[i][j] + " "); 				
+			}
+    		aptidao += maiorDistribuiçãoPorFuncionalidade;
+    		System.out.println();
+		}
+    	System.out.println("Aptidão: " + aptidao);
     }
 
-    public int getAptidao() {
+    public int getAptidao() {    
         return aptidao;
     }
 
