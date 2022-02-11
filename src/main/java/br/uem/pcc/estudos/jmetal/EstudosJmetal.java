@@ -6,7 +6,7 @@ public class EstudosJmetal {
 	
 	public static void main(String[] args) {
 		IntegerProblem generateHelloWorld = new HelloWorldProblem();
-		
+		System.out.println("Foi.");
 
 	}
 

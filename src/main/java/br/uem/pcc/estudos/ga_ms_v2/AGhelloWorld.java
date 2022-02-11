@@ -31,7 +31,34 @@ public class AGhelloWorld {
 			"[FINANCEIRO2] GerenciarMulta.receber()",
 			"[FINANCEIRO2] GerenciarMulta.estornar()",
 			"[FINANCEIRO2] GerenciarMulta.calcularJuros()",
-			"[FINANCEIRO2] GerenciarMulta.baixar()"
+			"[FINANCEIRO2] GerenciarMulta.baixar()",
+			"[EMPRÉSTIMO9] ManterEmpréstimo.emprestar()",
+			"[EMPRÉSTIMO9] ManterEmpréstimo.devolver()",
+			"[EMPRÉSTIMO9] ManterEmpréstimo.cancelar()",
+			"[EMPRÉSTIMO9] ManterEmpréstimo.estonar()",
+			"[EMPRÉSTIMO9] ManterEmpréstimo.avaliar()",
+			"[FINANCEIRO9] GerenciarMulta.calcular()",
+			"[FINANCEIRO9] GerenciarMulta.receber()",
+			"[FINANCEIRO9] GerenciarMulta.estornar()",
+			"[FINANCEIRO9] GerenciarMulta.calcularJuros()",
+			"[FINANCEIRO9] GerenciarMulta.baixar()",
+			"[EMPRÉSTIMO29] ManterEmpréstimo.emprestar()",
+			"[EMPRÉSTIMO29] ManterEmpréstimo.devolver()",
+			"[EMPRÉSTIMO29] ManterEmpréstimo.cancelar()",
+			"[EMPRÉSTIMO29] ManterEmpréstimo.estonar()",
+			"[EMPRÉSTIMO29] ManterEmpréstimo.avaliar()",
+			"[EMPRÉSTIMO29] ManterEmpréstimo.emprestar()",
+			"[EMPRÉSTIMO29] ManterEmpréstimo.devolver()",
+			"[EMPRÉSTIMO29] ManterEmpréstimo.cancelar()",
+			"[EMPRÉSTIMO29] ManterEmpréstimo.estonar()",
+			"[EMPRÉSTIMO29] ManterEmpréstimo.avaliar()",
+			"[FINANCEIRO29] GerenciarMulta.calcular()",
+			"[FINANCEIRO29] GerenciarMulta.receber()",
+			"[FINANCEIRO29] GerenciarMulta.calcular()",
+			"[FINANCEIRO29] GerenciarMulta.receber()",
+			"[FINANCEIRO29] GerenciarMulta.estornar()",
+			"[FINANCEIRO29] GerenciarMulta.calcularJuros()",
+			"[FINANCEIRO29] GerenciarMulta.baixar()"
 		};        			
 
     	
@@ -39,7 +66,7 @@ public class AGhelloWorld {
         //Algoritimo.setSolucao(Individuo.comGenes("1111222221"));
         //Define os caracteres existentes
     	Algoritimo.setMonolito(monolito);
-        Algoritimo.setCaracteres("123");
+        Algoritimo.setCaracteres("1234");
         //taxa de crossover de 60%
         Algoritimo.setTaxaDeCrossover(0.6);
         //taxa de mutação de 3%
@@ -47,7 +74,7 @@ public class AGhelloWorld {
         //elitismo
         boolean eltismo = true;
         //tamanho da população
-        int tamPop = 100;
+        int tamPop = 1000;
         //numero máximo de gerações
         int numMaxGeracoes = 100;
 
