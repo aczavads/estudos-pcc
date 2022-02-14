@@ -6,8 +6,6 @@ import java.util.stream.Collectors;
 import org.uma.jmetal.problem.Problem;
 import org.uma.jmetal.solution.sequencesolution.impl.CharSequenceSolution;
 
-import br.uem.pcc.estudos.ga.Algoritimo;
-
 public class HelloWorldProblem<T> implements Problem<CharSequenceSolution> {
 	private int solutionLength;
 	private String possibleGeneValues = "!,.:;?áÁãÃâÂõÕôÔóÓéêíÉÊQWERTYUIOPASDFGHJKLÇZXCVBNMqwertyuiopasdfghjklçzxcvbnm1234567890 ";
@@ -41,7 +39,16 @@ public class HelloWorldProblem<T> implements Problem<CharSequenceSolution> {
 
 	@Override
 	public CharSequenceSolution evaluate(CharSequenceSolution solution) {
-		solution.objectives()[0] = 0;
+        String solucao = "Hello world!";
+        int aptidao = 0;
+        for (int i = 0; i < solucao.length(); i++) {
+            if (solucao.charAt(i) == solution.variables().get(i)) {
+                aptidao++;
+            }
+        }
+		
+		solution.objectives()[0] = aptidao;
+		System.out.println(solution.variables() + " ==> Aptidão="+aptidao);
 		return solution;
 	}
 
@@ -51,7 +58,7 @@ public class HelloWorldProblem<T> implements Problem<CharSequenceSolution> {
         Random r = new Random();
         
         for (int i = 0; i < solutionLength; i++) {
-            solution.variables().add(i, possibleGeneValues.charAt(r.nextInt(possibleGeneValues.length())));
+            solution.variables().add(i,	 possibleGeneValues.charAt(r.nextInt(possibleGeneValues.length())));
         }
 		System.out.println("CharSequenceSolution.createSolution() " + solution.variables().stream().map(String::valueOf).collect(Collectors.joining()));		
 		return solution;
